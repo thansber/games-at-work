@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "start:build": "cd dist && es-dev-server --open",
+    "build": "rimraf dist && rollup -c rollup.config.js",
+    "start": "es-dev-server --app-index src/index.html --node-resolve --open --watch"
+  },
+  "devDependencies": {
+    "@open-wc/building-rollup": "^0.14.3",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.15.4",
+    "es-dev-server": "^1.5.0"
+  },
+  "name": "games-at-work",
+  "version": "0.0.0",
+  "description": "Presentation titled Playing Games at Work",
+  "author": "thansber@yahoo.com",
+  "license": "MIT",
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  }
+}
