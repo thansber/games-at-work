@@ -43,18 +43,18 @@ class Slides extends LitElement {
       case 'X':
       case ' ':
       case 'Enter':
-      case 'ArrowRight':
-      case 'ArrowDown':
         this.nextSlide();
         break;
       case 'z':
       case 'Z':
-      case 'ArrowLeft':
-      case 'ArrowUp':
         this.previousSlide();
         break;
       default:
-        console.log(e.key);
+        this.dispatchEvent(
+          new CustomEvent('slides-key', {
+            detail: e.key
+          })
+        );
     }
   }
 
