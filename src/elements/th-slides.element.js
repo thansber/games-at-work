@@ -49,13 +49,13 @@ class Slides extends LitElement {
       case 'Z':
         this.previousSlide();
         break;
-      default:
-        this.dispatchEvent(
-          new CustomEvent('slides-key', {
-            detail: e.key
-          })
-        );
     }
+
+    this.dispatchEvent(
+      new CustomEvent('slides-key', {
+        detail: e.key
+      })
+    );
   }
 
   onSlotChange(e) {

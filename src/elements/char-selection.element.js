@@ -8,7 +8,21 @@ class CharSelection extends LitElement {
           display: flex;
           flex-direction: column;
           font-size: 150%;
+          position: relative;
           width: 10rem;
+        }
+
+        :host([current])::before {
+          background-image: url('images/cursor.png');
+          background-repeat: no-repeat;
+          background-size: cover;
+          content: ' ';
+          display: inline-block;
+          height: 3rem;
+          left: -4rem;
+          position: absolute;
+          top: 0.25rem;
+          width: 3rem;
         }
 
         img {

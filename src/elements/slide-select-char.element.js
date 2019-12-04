@@ -16,10 +16,6 @@ class SlideSelectChar extends LitElement {
           justify-content: space-around;
           margin-top: 8rem;
         }
-
-        [current] {
-          box-shadow: 10px 10px 10px white;
-        }
       `
     ];
   }
@@ -33,17 +29,21 @@ class SlideSelectChar extends LitElement {
     this.chars[0].current = true;
   }
 
+  getSelectedChar() {
+    const selected = this.chars.find(ch => ch.hasAttribute('current'));
+    return {
+      image: selected.getAttribute('image'),
+      name: selected.innerHTML
+    };
+  }
+
   render() {
     return html`
       <h1>Select a player</h1>
 
       <section>
-        <char-selection image="images/char1.png"
-          >The Witless Knight</char-selection
-        >
-        <char-selection image="images/char2.png"
-          >The Spoony Bard</char-selection
-        >
+        <char-selection image="images/char1.png">The Witless Knight</char-selection>
+        <char-selection image="images/char2.png">The Spoony Bard</char-selection>
         <char-selection image="images/char3.png">The Wise Sage</char-selection>
         <char-selection image="images/char4.png">The Black Mage</char-selection>
       </section>
