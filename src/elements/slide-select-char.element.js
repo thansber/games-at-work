@@ -35,21 +35,17 @@ class SlideSelectChar extends LitElement {
 
   render() {
     return html`
-      <h1>Select a character</h1>
+      <h1>Select a player</h1>
 
       <section>
-        <char-selection image="images/board-games/operation.jpg"
+        <char-selection image="images/char1.png"
           >The Witless Knight</char-selection
         >
-        <char-selection image="images/board-games/operation.jpg"
+        <char-selection image="images/char2.png"
           >The Spoony Bard</char-selection
         >
-        <char-selection image="images/board-games/operation.jpg"
-          >The Wise Sage</char-selection
-        >
-        <char-selection image="images/board-games/operation.jpg"
-          >The Black Mage</char-selection
-        >
+        <char-selection image="images/char3.png">The Wise Sage</char-selection>
+        <char-selection image="images/char4.png">The Black Mage</char-selection>
       </section>
     `;
   }
