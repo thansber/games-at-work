@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 
 import { commonCss } from '../css';
 
-class SlideIntro extends LitElement {
+class SlideText extends LitElement {
   static get styles() {
     return [
       commonCss,
@@ -14,17 +14,21 @@ class SlideIntro extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      text: { type: String }
+    };
   }
 
   render() {
     return html`
-      <h1>Playing</h1>
-      <h1>Games</h1>
-      <h1>at</h1>
-      <h1>Work</h1>
+      ${this.text.split(' ').map(
+        word =>
+          html`
+            <h1>${word}</h1>
+          `
+      )}
     `;
   }
 }
 
-customElements.define('slide-intro', SlideIntro);
+customElements.define('slide-text', SlideText);

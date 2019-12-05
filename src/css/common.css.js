@@ -12,5 +12,6 @@ export const commonCss = css`
     font-size: 400%;
     font-weight: normal;
     margin: 2rem 0;
+    text-transform: uppercase;
   }
 `;

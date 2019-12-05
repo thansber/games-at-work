@@ -1,8 +1,10 @@
 import './th-slide.element';
 import './th-slides.element';
 
-// Slides (ordered)
-import './slide-intro.element';
+// Slides
+import './slide-text.element';
 import './slide-select-char.element';
+import './slide-guess-game.element';
 
 import './char-selection.element';
+import './char-summary.element';

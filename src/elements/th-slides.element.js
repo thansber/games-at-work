@@ -78,18 +78,21 @@ class Slides extends LitElement {
       return;
     }
     const index = this.slides.findIndex(slide => slide.hasAttribute('current'));
+    const newIndex = index + direction;
 
-    if (index + direction < 0) {
+    if (newIndex < 0) {
       return;
     }
-    if (index + direction >= this.slides.length) {
+    if (newIndex >= this.slides.length) {
       return;
     }
 
     if (index > -1) {
       this.slides[index].current = false;
     }
-    this.slides[index + direction].current = true;
+    this.slides[newIndex].current = true;
+
+    this.dispatchEvent(new CustomEvent('slide-changed', { detail: newIndex }));
   }
 }
 
