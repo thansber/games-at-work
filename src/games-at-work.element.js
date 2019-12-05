@@ -10,7 +10,18 @@ class GamesAtWork extends LitElement {
   }
 
   static get styles() {
-    return [css``];
+    return [
+      css`
+        li {
+          line-height: 4.5rem;
+          margin-bottom: 3.5rem;
+        }
+
+        li.dim {
+          opacity: 0.2;
+        }
+      `
+    ];
   }
 
   static get properties() {
@@ -74,6 +85,7 @@ class GamesAtWork extends LitElement {
       <th-slides @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
         <th-slide><slide-select-char id="selectChar"></slide-select-char></th-slide>
+
         <th-slide><slide-text text="Guess That Game"></slide-text></th-slide>
         <th-slide><slide-guess-game image="images/sports/soccer.jpg"></slide-guess-game></th-slide>
         <th-slide><slide-guess-game image="images/sports/ninepin.jpg"></slide-guess-game></th-slide>
@@ -84,6 +96,63 @@ class GamesAtWork extends LitElement {
         <th-slide><slide-guess-game image="images/video-games/carmen-sandiego-world.png"></slide-guess-game></th-slide>
         <th-slide><slide-guess-game image="images/video-games/oregon-trail2.png"></slide-guess-game></th-slide>
         <th-slide><slide-guess-game image="images/video-games/battletoads.png"></slide-guess-game></th-slide>
+
+        <th-slide><slide-list heading="Why do we play games?"></slide-list></th-slide>
+        <th-slide>
+          <slide-list heading="Why do we play games?">
+            <ul>
+              <li>Fun</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Why do we play games?">
+            <ul>
+              <li class="dim">Fun</li>
+              <li>Interaction with others</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Why do we play games?">
+            <ul>
+              <li class="dim">Fun</li>
+              <li class="dim">Interaction with others</li>
+              <li>Competition</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+
+        <th-slide>
+          <slide-list heading="Where do we play games?"></slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Where do we play games?">
+            <h2>NOT AT WORK</h2>
+          </slide-list>
+        </th-slide>
+        <th-slide current>
+          <slide-list heading="Where do we play games?">
+            <h2>NOT AT WORK</h2>
+            <h2>WHY NOT?</h2>
+          </slide-list>
+        </th-slide>
+
+        <th-slide>
+          <slide-list heading="Gamification">
+            <ul class="no-marker">
+              <li>The application of typical elements of game playing to other areas of activity</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Gamification">
+            <ul class="no-marker">
+              <li class="dim">The application of typical elements of game playing to other areas of activity</li>
+              <li>Helps make boring tasks more fun</li>
+            </ul>
+          </slide-list>
+        </th-slide>
       </th-slides>
     `;
   }
