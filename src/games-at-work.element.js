@@ -33,6 +33,7 @@ class GamesAtWork extends LitElement {
   }
 
   firstUpdated() {
+    this.slideContainer = this.shadowRoot.getElementById('slides');
     this.slides = Array.from(this.shadowRoot.querySelectorAll('th-slide'));
     this.numSlides = this.slides.length;
     this.selectChar = this.shadowRoot.getElementById('selectChar');
@@ -47,6 +48,23 @@ class GamesAtWork extends LitElement {
 
   getCurrentSlideIndex() {
     return this.slides.findIndex(slide => slide.hasAttribute('current'));
+  }
+
+  onGamepadButton(e) {
+    switch (e.detail.button) {
+      case 'A':
+      case 'X':
+      case 'Right':
+      case 'Down':
+        this.slideContainer.nextSlide();
+        break;
+      case 'B':
+      case 'Y':
+      case 'Left':
+      case 'Up':
+        this.slideContainer.previousSlide();
+        break;
+    }
   }
 
   onKey(e) {
@@ -82,7 +100,9 @@ class GamesAtWork extends LitElement {
         ?hidden="${this.slideIndex <= 1}"
       ></char-summary>
 
-      <th-slides @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
+      <gamepad-controller @gamepad-button=${this.onGamepadButton}></gamepad-controller>
+
+      <th-slides id="slides" @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
         <th-slide><slide-select-char id="selectChar"></slide-select-char></th-slide>
 
@@ -188,7 +208,7 @@ class GamesAtWork extends LitElement {
         </th-slide>
 
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
-        <th-slide current><slide-text text="Play Games at Work"></slide-text></th-slide>
+        <th-slide><slide-text text="Play Games at Work"></slide-text></th-slide>
 
         <th-slide><slide-game-over></slide-game-over></th-slide>
       </th-slides>

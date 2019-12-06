@@ -1,5 +1,6 @@
 import './th-slide.element';
 import './th-slides.element';
+import './gamepad-controller.element';
 
 // Slides
 import './slide-text.element';

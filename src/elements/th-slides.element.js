@@ -4,6 +4,7 @@ class Slides extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.keyHandler = this.onKey.bind(this);
+
     document.addEventListener('keyup', this.keyHandler);
   }
 
