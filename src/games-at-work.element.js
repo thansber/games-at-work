@@ -86,7 +86,7 @@ class GamesAtWork extends LitElement {
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
         <th-slide><slide-select-char id="selectChar"></slide-select-char></th-slide>
 
-        <th-slide><slide-text text="Guess That Game"></slide-text></th-slide>
+        <th-slide><slide-text text="Guess That Game" class="vertical-center"></slide-text></th-slide>
         <th-slide><slide-guess-game image="images/sports/soccer.jpg"></slide-guess-game></th-slide>
         <th-slide><slide-guess-game image="images/sports/ninepin.jpg"></slide-guess-game></th-slide>
         <th-slide><slide-guess-game image="images/sports/jai-alai.jpg"></slide-guess-game></th-slide>
@@ -131,7 +131,7 @@ class GamesAtWork extends LitElement {
             <h2>NOT AT WORK</h2>
           </slide-list>
         </th-slide>
-        <th-slide current>
+        <th-slide>
           <slide-list heading="Where do we play games?">
             <h2>NOT AT WORK</h2>
             <h2>WHY NOT?</h2>
@@ -153,6 +153,44 @@ class GamesAtWork extends LitElement {
             </ul>
           </slide-list>
         </th-slide>
+
+        <th-slide>
+          <slide-list heading="How do we play games at work?"></slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="How do we play games at work?">
+            <h2>EMBRACE WHIMSY</h2>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Approach 1 - SCORING">
+            <ul>
+              <li>Immediate, positive feedback</li>
+              <li>Leaderboards</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Approach 2 - AVATARS">
+            <ul>
+              <li>Engages the user</li>
+              <li>Further customization unlocks based on score</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+        <th-slide>
+          <slide-list heading="Approach 3 - EASTER EGGS">
+            <ul>
+              <li>Promotes discovery</li>
+              <li>Promotes excitement</li>
+            </ul>
+          </slide-list>
+        </th-slide>
+
+        <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
+        <th-slide current><slide-text text="Play Games at Work"></slide-text></th-slide>
+
+        <th-slide><slide-game-over></slide-game-over></th-slide>
       </th-slides>
     `;
   }

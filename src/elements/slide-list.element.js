@@ -12,15 +12,16 @@ class SlideList extends LitElement {
         }
 
         h1 {
-          font-size: 300%;
+          font-size: 600%;
+          line-height: 4rem;
           margin-left: 2rem;
         }
 
         ::slotted(ul) {
-          font-size: 250%;
+          font-size: 400%;
           list-style-type: square;
           margin-left: 2rem;
-          margin-top: 4rem;
+          margin-top: 3rem;
         }
 
         ::slotted(ul.no-marker) {
@@ -28,12 +29,13 @@ class SlideList extends LitElement {
         }
 
         ::slotted(h2) {
-          font-size: 250%;
+          font-size: 600%;
+          margin: 0 0 2rem 0;
           text-align: center;
         }
 
         ::slotted(h2:first-child) {
-          margin-top: 7.5rem;
+          margin-top: 5rem;
         }
       `
     ];

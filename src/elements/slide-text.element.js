@@ -4,13 +4,7 @@ import { commonCss } from '../css';
 
 class SlideText extends LitElement {
   static get styles() {
-    return [
-      commonCss,
-      css`
-        :host {
-        }
-      `
-    ];
+    return [commonCss];
   }
 
   static get properties() {

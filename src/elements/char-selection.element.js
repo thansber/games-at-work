@@ -7,7 +7,7 @@ class CharSelection extends LitElement {
         :host {
           display: flex;
           flex-direction: column;
-          font-size: 150%;
+          font-size: 250%;
           position: relative;
           width: 10rem;
         }

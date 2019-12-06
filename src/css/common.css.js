@@ -8,10 +8,13 @@ export const commonCss = css`
     padding: 3rem;
   }
 
+  :host(.vertical-center) {
+    justify-content: center;
+  }
+
   h1 {
-    font-size: 400%;
+    font-size: 600%;
     font-weight: normal;
-    margin: 2rem 0;
-    text-transform: uppercase;
+    margin: 1rem 0;
   }
 `;

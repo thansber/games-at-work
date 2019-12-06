@@ -7,7 +7,7 @@ class SlideSelectChar extends LitElement {
       commonCss,
       css`
         h1 {
-          font-size: 300%;
+          font-size: 500%;
           text-align: center;
         }
 
