@@ -1,14 +1,16 @@
 {
   "scripts": {
-    "start:build": "cd dist && es-dev-server --open",
+    "start:build": "npm run build; cd dist && es-dev-server --open",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "start": "es-dev-server --app-index src/index.html --node-resolve --open --watch"
+    "start": "es-dev-server --app-index src/index.html --node-resolve --open --watch",
+    "deploy": "npm run build && firebase deploy"
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^0.14.3",
+    "es-dev-server": "^1.5.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.15.4",
-    "es-dev-server": "^1.5.0"
+    "rollup-plugin-copy-assets": "^2.0.1"
   },
   "name": "games-at-work",
   "version": "0.0.0",
