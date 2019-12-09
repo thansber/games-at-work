@@ -50,6 +50,10 @@ class GamesAtWork extends LitElement {
     return this.slides.findIndex(slide => slide.hasAttribute('current'));
   }
 
+  isCharSummaryHidden() {
+    return this.slideIndex <= 1 || this.slideIndex === this.slides.length - 1;
+  }
+
   onGamepadButton(e) {
     switch (e.detail.button) {
       case 'A':
@@ -97,7 +101,7 @@ class GamesAtWork extends LitElement {
         name="${this.selectedChar.name}"
         life="${this.numSlides - this.slideIndex}"
         max-life="${this.numSlides}"
-        ?hidden="${this.slideIndex <= 1}"
+        ?hidden="${this.isCharSummaryHidden()}"
       ></char-summary>
 
       <gamepad-controller @gamepad-button=${this.onGamepadButton}></gamepad-controller>
