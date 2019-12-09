@@ -205,8 +205,8 @@ class GamesAtWork extends LitElement {
         <th-slide>
           <slide-list heading="Approach 3 - EASTER EGGS">
             <ul>
-              <li>Promotes discovery</li>
-              <li>Promotes excitement</li>
+              <li>Excitement promotes discovery</li>
+              <li>Discovery promotes excitement</li>
             </ul>
           </slide-list>
         </th-slide>
