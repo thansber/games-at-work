@@ -7,6 +7,8 @@ class GamepadController extends LitElement {
     this.listenEvery = 300;
     this.mapping = 'nintendo';
 
+    this.pressed = {};
+
     this.gamepadMap = {
       'Joy-Con \\(L\\)': {
         0: {
@@ -85,6 +87,14 @@ class GamepadController extends LitElement {
     super.disconnectedCallback();
   }
 
+  isButtonPressEnd(gamepadButton, mappedButton) {
+    return !gamepadButton.pressed && this.pressed[mappedButton];
+  }
+
+  isButtonPressStart(gamepadButton, mappedButton) {
+    return gamepadButton.pressed && !this.pressed[mappedButton];
+  }
+
   pollGamepad() {
     const gamepads = Array.from(navigator.getGamepads()).filter(Boolean);
     if (gamepads.length) {
@@ -95,34 +105,53 @@ class GamepadController extends LitElement {
         return;
       }
 
-      const pressedButton = gamepad.buttons.findIndex(b => b.pressed || b.value > 0);
-      if (pressedButton < 0) {
+      const activeButton = gamepad.buttons.findIndex(b => b.pressed || b.value > 0);
+      if (activeButton < 0) {
         return;
       }
-      const gamepadButton = this.gamepadMap[gamepadId][pressedButton];
-      if (!gamepadButton) {
-        console.error(`No button mapping found for gamepad [${gamepadId}] and button [${pressedButton}]`);
+      const buttonMapping = this.gamepadMap[gamepadId][activeButton];
+      if (!buttonMapping) {
+        console.error(`No button mapping found for gamepad [${gamepadId}] and button [${activeButton}]`);
         return;
       }
 
-      const button = gamepadButton[this.mapping];
-      if (!button) {
+      const mappedButton = buttonMapping[this.mapping];
+      if (!mappedButton) {
         console.error(
-          `No button mapping found for gamepad [${gamepadId}] and button [${pressedButton}] and type [${this.mapping}]`
+          `No button mapping found for gamepad [${gamepadId}] and button [${activeButton}] and type [${this.mapping}]`
         );
         return;
       }
 
-      this.dispatchEvent(
-        new CustomEvent('gamepad-button', {
-          detail: {
-            gamepad,
-            gamepadButton,
-            pressedButton,
-            button
-          }
-        })
-      );
+      const gamepadButton = gamepad.buttons[activeButton];
+      const detail = {
+        gamepad,
+        gamepadButton: buttonMapping,
+        pressedButton: activeButton,
+        button: mappedButton
+      };
+
+      if (gamepadButton.value > 0) {
+        this.dispatchEvent(
+          new CustomEvent('gamepad-button', {
+            detail
+          })
+        );
+      } else if (this.isButtonPressStart(gamepadButton, mappedButton)) {
+        this.pressed[mappedButton] = true;
+        this.dispatchEvent(
+          new CustomEvent('gamepad-button-press-start', {
+            detail
+          })
+        );
+      } else if (this.isButtonPressEnd(gamepadButton, mappedButton)) {
+        this.pressed[mappedButton] = false;
+        this.dispatchEvent(
+          new CustomEvent('gamepad-button-press-end', {
+            detail
+          })
+        );
+      }
     }
   }
 
