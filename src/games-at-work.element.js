@@ -55,7 +55,7 @@ class GamesAtWork extends LitElement {
   }
 
   onGamepadButtonDown(e) {
-    switch (e.button.detail) {
+    switch (e.detail.button) {
       case '+':
       case '-':
         this.slideContainer.classList.add('show-notes');
@@ -122,7 +122,7 @@ class GamesAtWork extends LitElement {
 
       <gamepad-controller
         @gamepad-button-down="${this.onGamepadButtonDown}"
-        gamepad-button-up="${this.onGamepadButtonUp}"
+        @gamepad-button-up="${this.onGamepadButtonUp}"
       ></gamepad-controller>
 
       <th-slides id="slides" @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
@@ -135,7 +135,10 @@ class GamesAtWork extends LitElement {
           <p slot="notes">Explain each char</p>
         </th-slide>
 
-        <th-slide><slide-text text="Guess That Game" class="vertical-center"></slide-text></th-slide>
+        <th-slide>
+          <slide-text text="Guess That Game" class="vertical-center"></slide-text>
+          <p slot="notes">Explain rules and set expectations</p>
+        </th-slide>
         <th-slide>
           <slide-guess-game image="images/sports/soccer.jpg"></slide-guess-game>
           <p slot="notes">Soccer, Futbol</p>
@@ -248,6 +251,7 @@ class GamesAtWork extends LitElement {
           <slide-list heading="How do we play games at work?">
             <h2>EMBRACE WHIMSY</h2>
           </slide-list>
+          <p slot="notes">Don't take yourself seriously</p>
         </th-slide>
         <th-slide>
           <slide-list heading="Approach 1 - SCORING">
@@ -256,6 +260,12 @@ class GamesAtWork extends LitElement {
               <li>Leaderboards</li>
             </ul>
           </slide-list>
+          <p slot="notes">Give points to audience wearing a certain color</p>
+          <p slot="notes">Easiest, most common form of gamification</p>
+          <p slot="notes">Examples everywhere: Starbucks rewards cards, Fitbits, LOTR orc killing</p>
+          <p slot="notes">Can act as a currency, feels icky</p>
+          <p slot="notes">Easy to abuse both defining them and obtaining them - cheaters</p>
+          <p slot="notes">Leaderboards may or may not be effective</p>
         </th-slide>
         <th-slide>
           <slide-list heading="Approach 2 - AVATARS">
@@ -264,6 +274,8 @@ class GamesAtWork extends LitElement {
               <li>Further customization unlocks based on score</li>
             </ul>
           </slide-list>
+          <p slot="notes">Miis good example</p>
+          <p slot="notes">Completely optional</p>
         </th-slide>
         <th-slide>
           <slide-list heading="Approach 3 - EASTER EGGS">
@@ -272,6 +284,8 @@ class GamesAtWork extends LitElement {
               <li>Discovery promotes excitement</li>
             </ul>
           </slide-list>
+          <p slot="notes">Ready Player One entire plot is finding easter eggs</p>
+          <p slot="notes">Something API or backends can do</p>
         </th-slide>
 
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>

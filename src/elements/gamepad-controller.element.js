@@ -100,7 +100,6 @@ class GamepadController extends LitElement {
         return;
       }
 
-      console.log(gamepad.axes);
       const activeButton = gamepad.buttons.findIndex(b => b.pressed || b.value > 0);
       if (activeButton === -1) {
         if (this.pressed) {

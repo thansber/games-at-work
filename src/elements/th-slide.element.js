@@ -9,7 +9,7 @@ class Slide extends LitElement {
 
         #notes {
           bottom: 1rem;
-          color: rgb(128, 128, 128);
+          color: var(--notes);
           display: none;
           position: absolute;
           right: 1rem;
