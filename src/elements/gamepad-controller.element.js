@@ -4,10 +4,9 @@ class GamepadController extends LitElement {
   constructor() {
     super();
 
-    this.listenEvery = 300;
+    this.listenEvery = 500;
     this.mapping = 'nintendo';
-
-    this.pressed = {};
+    this.pressed = undefined;
 
     this.gamepadMap = {
       'Joy-Con \\(L\\)': {
@@ -87,12 +86,8 @@ class GamepadController extends LitElement {
     super.disconnectedCallback();
   }
 
-  isButtonPressEnd(gamepadButton, mappedButton) {
-    return !gamepadButton.pressed && this.pressed[mappedButton];
-  }
-
-  isButtonPressStart(gamepadButton, mappedButton) {
-    return gamepadButton.pressed && !this.pressed[mappedButton];
+  isButtonPressStart(gamepadButton) {
+    return gamepadButton.pressed && !this.pressed;
   }
 
   pollGamepad() {
@@ -105,10 +100,20 @@ class GamepadController extends LitElement {
         return;
       }
 
+      console.log(gamepad.axes);
       const activeButton = gamepad.buttons.findIndex(b => b.pressed || b.value > 0);
-      if (activeButton < 0) {
+      if (activeButton === -1) {
+        if (this.pressed) {
+          this.dispatchEvent(
+            new CustomEvent('gamepad-button-up', {
+              detail: this.pressed
+            })
+          );
+          this.pressed = undefined;
+        }
         return;
       }
+
       const buttonMapping = this.gamepadMap[gamepadId][activeButton];
       if (!buttonMapping) {
         console.error(`No button mapping found for gamepad [${gamepadId}] and button [${activeButton}]`);
@@ -137,17 +142,12 @@ class GamepadController extends LitElement {
             detail
           })
         );
-      } else if (this.isButtonPressStart(gamepadButton, mappedButton)) {
-        this.pressed[mappedButton] = true;
+      }
+
+      if (this.isButtonPressStart(gamepadButton)) {
+        this.pressed = mappedButton;
         this.dispatchEvent(
-          new CustomEvent('gamepad-button-press-start', {
-            detail
-          })
-        );
-      } else if (this.isButtonPressEnd(gamepadButton, mappedButton)) {
-        this.pressed[mappedButton] = false;
-        this.dispatchEvent(
-          new CustomEvent('gamepad-button-press-end', {
+          new CustomEvent('gamepad-button-down', {
             detail
           })
         );

@@ -54,8 +54,8 @@ class GamesAtWork extends LitElement {
     return this.slideIndex <= 1 || this.slideIndex === this.slides.length - 1;
   }
 
-  onGamepadButton(e) {
-    switch (e.detail.button) {
+  onGamepadButtonUp(e) {
+    switch (e.detail) {
       case 'A':
       case 'X':
       case 'Right':
@@ -104,7 +104,7 @@ class GamesAtWork extends LitElement {
         ?hidden="${this.isCharSummaryHidden()}"
       ></char-summary>
 
-      <gamepad-controller @gamepad-button=${this.onGamepadButton}></gamepad-controller>
+      <gamepad-controller @gamepad-button-up="${this.onGamepadButtonUp}"></gamepad-controller>
 
       <th-slides id="slides" @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
         <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
