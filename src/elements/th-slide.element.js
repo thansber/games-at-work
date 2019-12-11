@@ -6,6 +6,22 @@ class Slide extends LitElement {
       css`
         :host {
         }
+
+        #notes {
+          bottom: 1rem;
+          color: rgb(128, 128, 128);
+          display: none;
+          position: absolute;
+          right: 1rem;
+        }
+
+        #notes ::slotted(*) {
+          margin: 0;
+        }
+
+        :host-context(.show-notes) #notes {
+          display: block;
+        }
       `
     ];
   }
@@ -19,6 +35,7 @@ class Slide extends LitElement {
   render() {
     return html`
       <slot></slot>
+      <section id="notes"><slot name="notes"></slot></section>
     `;
   }
 }

@@ -54,6 +54,15 @@ class GamesAtWork extends LitElement {
     return this.slideIndex <= 1 || this.slideIndex === this.slides.length - 1;
   }
 
+  onGamepadButtonDown(e) {
+    switch (e.button.detail) {
+      case '+':
+      case '-':
+        this.slideContainer.classList.add('show-notes');
+        break;
+    }
+  }
+
   onGamepadButtonUp(e) {
     switch (e.detail) {
       case 'A':
@@ -67,6 +76,10 @@ class GamesAtWork extends LitElement {
       case 'Left':
       case 'Up':
         this.slideContainer.previousSlide();
+        break;
+      case '+':
+      case '-':
+        this.slideContainer.classList.remove('show-notes');
         break;
     }
   }
@@ -87,6 +100,9 @@ class GamesAtWork extends LitElement {
           this.selectedChar = this.selectChar.getSelectedChar();
         }
         break;
+      case 'n':
+      case 'N':
+        this.slideContainer.classList.toggle('show-notes');
     }
   }
 
@@ -104,22 +120,69 @@ class GamesAtWork extends LitElement {
         ?hidden="${this.isCharSummaryHidden()}"
       ></char-summary>
 
-      <gamepad-controller @gamepad-button-up="${this.onGamepadButtonUp}"></gamepad-controller>
+      <gamepad-controller
+        @gamepad-button-down="${this.onGamepadButtonDown}"
+        gamepad-button-up="${this.onGamepadButtonUp}"
+      ></gamepad-controller>
 
       <th-slides id="slides" @slides-key="${this.onKey}" @slide-changed="${this.onSlideChange}">
-        <th-slide><slide-text text="Playing Games at Work"></slide-text></th-slide>
-        <th-slide><slide-select-char id="selectChar"></slide-select-char></th-slide>
+        <th-slide>
+          <slide-text text="Playing Games at Work"></slide-text>
+          <p slot="notes">Introduce yourself</p>
+        </th-slide>
+        <th-slide>
+          <slide-select-char id="selectChar"></slide-select-char>
+          <p slot="notes">Explain each char</p>
+        </th-slide>
 
         <th-slide><slide-text text="Guess That Game" class="vertical-center"></slide-text></th-slide>
-        <th-slide><slide-guess-game image="images/sports/soccer.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/sports/ninepin.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/sports/jai-alai.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/board-games/operation.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/board-games/life.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/board-games/azul.jpg"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/video-games/carmen-sandiego-world.png"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/video-games/oregon-trail2.png"></slide-guess-game></th-slide>
-        <th-slide><slide-guess-game image="images/video-games/battletoads.png"></slide-guess-game></th-slide>
+        <th-slide>
+          <slide-guess-game image="images/sports/soccer.jpg"></slide-guess-game>
+          <p slot="notes">Soccer, Futbol</p>
+          <p slot="notes">fave moment from fave sport</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/sports/ninepin.jpg"></slide-guess-game>
+          <p slot="notes">Ninepin Bowling</p>
+          <p slot="notes">Mostly in Europe</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/sports/jai-alai.jpg"></slide-guess-game>
+          <p slot="notes">Jai Alai</p>
+          <p slot="notes">Board games next</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/board-games/operation.jpg"></slide-guess-game>
+          <p slot="notes">Operation</p>
+          <p slot="notes">Training surgeons everywhere</p>
+          <p slot="notes">Ask about most lucrative operation? Charlie Horse</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/board-games/life.jpg"></slide-guess-game>
+          <p slot="notes">Life</p>
+          <p slot="notes">Wrote banking app cuz daughter wanted to play so much</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/board-games/azul.jpg"></slide-guess-game>
+          <p slot="notes">Azul</p>
+          <p slot="notes">GOTY 2018</p>
+          <p slot="notes">Video Games next</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/video-games/carmen-sandiego-world.png"></slide-guess-game>
+          <p slot="notes">Where in the World is Carmen Sandiego</p>
+          <p slot="notes">Sing theme song from game show</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/video-games/oregon-trail2.png"></slide-guess-game>
+          <p slot="notes">Oregon Trail</p>
+          <p slot="notes">Teaching kids about horrible diseases</p>
+        </th-slide>
+        <th-slide>
+          <slide-guess-game image="images/video-games/battletoads.png"></slide-guess-game>
+          <p slot="notes">Battletoads</p>
+          <p slot="notes">HARD - Impossible to complete with 2 players</p>
+        </th-slide>
 
         <th-slide><slide-list heading="Why do we play games?"></slide-list></th-slide>
         <th-slide>
