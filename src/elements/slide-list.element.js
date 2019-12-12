@@ -8,7 +8,7 @@ class SlideList extends LitElement {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 8rem 3rem 3rem 3rem;
+          padding: 8rem 3rem 0 3rem;
         }
 
         h1 {
