@@ -5,7 +5,7 @@ class SlideGameOver extends LitElement {
     return [
       css`
         img {
-          height: 100vh;
+          height: calc(100vh - 2rem);
           margin-left: 15%;
         }
 
