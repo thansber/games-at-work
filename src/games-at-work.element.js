@@ -13,8 +13,8 @@ class GamesAtWork extends LitElement {
     return [
       css`
         li {
-          line-height: 4.5rem;
-          margin-bottom: 3.5rem;
+          line-height: 3.5rem;
+          margin-bottom: 2.5rem;
         }
 
         li.dim {
