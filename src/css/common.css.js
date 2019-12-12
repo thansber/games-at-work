@@ -4,7 +4,7 @@ export const commonCss = css`
   :host {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 7rem);
     padding: 3rem;
   }
 
