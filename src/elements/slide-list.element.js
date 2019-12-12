@@ -8,7 +8,7 @@ class SlideList extends LitElement {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 8rem 3rem 3rem;
+          padding: 8rem 3rem 3rem 3rem;
         }
 
         h1 {
@@ -35,7 +35,7 @@ class SlideList extends LitElement {
         }
 
         ::slotted(h2:first-child) {
-          margin-top: 5rem;
+          margin-top: 2.5rem;
         }
       `
     ];
